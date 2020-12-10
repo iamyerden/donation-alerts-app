@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 *ngIf="currentUser && currentUser.username">Username: {{currentUser.username}}</h1>
+
+  <form [formGroup]="donationForm" style="width: 40%; margin: 0 auto">
+
+    <div style="display: flex; justify-content: space-between">
+      <div style="width: 48%;">
+        <mat-form-field class="example-full-width">
+          <mat-label>Sender name</mat-label>
+          <input matInput formControlName="sender_name">
+        </mat-form-field>
+      </div>
+      <div style="width: 48%;">
+        <mat-form-field class="example-full-width">
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" formControlName="amount">
+          <span matPrefix>$&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="message" placeholder="Message text here"></textarea>
+      </mat-form-field>
+    </div>
+      <button mat-raised-button color="accent" (click)="donate()">Donate</button>
+  </form>
+</div>
