@@ -16,6 +16,10 @@ export class AccountService {
     return this.http.get(`${this.PUBLIC_ACCOUNT}/read/all/iterable`);
   }
 
+  searchAccounts(username: string): Observable<any> {
+    return this.http.get(`${this.PUBLIC_ACCOUNT}/search?username=${username}`);
+  }
+
   getAccountById(id): Observable<any> {
     return this.http.get(`${this.PUBLIC_ACCOUNT}/read/${id}`);
   }

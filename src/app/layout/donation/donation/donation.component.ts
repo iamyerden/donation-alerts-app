@@ -22,6 +22,8 @@ export class DonationComponent implements OnInit {
   username: string;
   currentUser: Account;
   tempDonation: Donation;
+  responseDonation: Donation;
+  isDonated = false;
 
   donationForm = new FormGroup({
     sender_name: new FormControl(''),
@@ -47,9 +49,19 @@ export class DonationComponent implements OnInit {
     this.tempDonation.receiver_id = this.currentUser.id;
     console.log(this.tempDonation);
     this.donationService.createDonation(this.tempDonation).subscribe(res => {
-      // this.tempDonation = res;
+      this.responseDonation = res;
+      this.isDonated = true;
       console.log('res', res);
-      console.log('tempDonation', this.tempDonation);
+      console.log('responseDonation', this.responseDonation);
     });
+  }
+
+  close() {
+    this.isDonated = false;
+    this.refresh();
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 }

@@ -7,13 +7,13 @@
       <div style="width: 48%;">
         <mat-form-field class="example-full-width">
           <mat-label>Sender name</mat-label>
-          <input matInput formControlName="sender_name">
+          <input matInput formControlName="sender_name" autocomplete="off">
         </mat-form-field>
       </div>
       <div style="width: 48%;">
         <mat-form-field class="example-full-width">
           <mat-label>Amount</mat-label>
-          <input matInput type="number" formControlName="amount">
+          <input matInput type="number" formControlName="amount" autocomplete="off">
           <span matPrefix>$&nbsp;</span>
           <span matSuffix>.00</span>
         </mat-form-field>
@@ -28,3 +28,16 @@
       <button mat-raised-button color="accent" (click)="donate()">Donate</button>
   </form>
 </div>
+
+<div *ngIf="isDonated">
+  <div class="donation-alert">
+    <h1 mat-dialog-title>Successfully Donated!</h1>
+    <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+    <br>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close style="margin: 0;" (click)="close()">Close</button>
+    </div>
+  </div>
+  <div class="background"></div>
+</div>
+

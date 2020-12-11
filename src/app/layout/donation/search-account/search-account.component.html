@@ -1,1 +1,22 @@
-<p>search-account works!</p>
+<div class="container">
+  <div style="padding-top: 150px">
+    <div style="width: 48%; margin: 0 auto">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Sender name</mat-label>
+        <input matInput #senderNameInput [(ngModel)]="username" (input)="filterItem(senderNameInput.value)" autocomplete="off">
+      </mat-form-field>
+
+      <div *ngIf="username">
+<!--        <div class="account-list" *ngFor="let account of accountList">-->
+<!--          {{account.username}}-->
+<!--        </div>-->
+        <mat-selection-list #shoes [multiple]="false">
+          <mat-list-option *ngFor="let account of accountList" [value]="account" (click)="donationPage(account.username)">
+            {{account.username}}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+
+    </div>
+  </div>
+</div>
